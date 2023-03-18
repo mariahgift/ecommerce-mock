@@ -12,6 +12,7 @@ const Products = () => {
 
 
   useEffect(() => {
+ 
     const getProducts = async () => {
       let componentMounted = true;
       setLoading(true);
@@ -21,7 +22,6 @@ const Products = () => {
         setData(await response.clone().json());
         setFilter(await response.json());
         setLoading(false);
-        console.log(filter);
       }
 
       return () => {
@@ -29,58 +29,20 @@ const Products = () => {
       };
     };
     getProducts();
-  }, [filter]);
+  }, []);
 
   const Loading = () => {
     return <>Loading ...</>;
   };
 
-  const filterProduct = (cat) => {
-    const updatedList = data.filter((x) => x.category === cat);
-    setFilter(updatedList);
-  };
-
   const ShowProducts = () => {
     return (
       <>
-        <div className="buttons d-flex justify-content-center mb-5 pb-5">
-          <button
-            className="btn btn-outline-info me-2"
-            onClick={() => setFilter(data)}
-          >
-            All
-          </button>
-          <button
-            className="btn btn-outline-info me-2"
-            onClick={() => filterProduct("men's clothing")}
-          >
-            Men's Clothing
-          </button>
-          <button
-            className="btn btn-outline-info me-2"
-            onClick={() => filterProduct("women's clothing")}
-          >
-            Women's Clothing
-          </button>
-          <button
-            className="btn btn-outline-info me-2"
-            onClick={() => filterProduct("jewelery")}
-          >
-            Jewelry
-          </button>
-          <button
-            className="btn btn-outline-info me-2"
-            onClick={() => filterProduct("electronics")}
-          >
-            Electronics
-          </button>
-        </div>
-
         {filter.map((product) => {
           product.quantity = 1;
           return (
             <>
-              <div className="col-md-3 mb-4">
+              <div className="col-md-4 mb-4">
                 <div class="card h-100 text-center p-4" key={product.id}>
                   <img
                     src={product.image}
@@ -95,12 +57,12 @@ const Products = () => {
                     <p class="card-text lead fw-bold">₱{product.price}</p>
                     <NavLink
                       to={`/products/${product.id}`}
-                      className="btn btn-outline-info"
+                      className="btn btn-outline-warning m-2"
                     >
-                      Buy Now
+                      See Details
                     </NavLink>
                     <button
-                      className="btn btn-outline-info"
+                      className="btn btn-outline-primary"
                       onClick={() =>
                         dispatch({ type: "AddToCart", payload: product })
                       }
@@ -126,6 +88,7 @@ const Products = () => {
       </div>
       <div className="row justify-content-center">
         {loading ? <Loading /> : <ShowProducts />}
+        {/* <ShowProducts/> */}
       </div>
     </div>
   );
