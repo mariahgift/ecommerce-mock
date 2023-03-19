@@ -1,1 +1,2 @@
 /api/*  https://fakestoreapi.com/products 200
+/api/*  https://fakestoreapi.com/products?limit=5 200

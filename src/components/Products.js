@@ -10,12 +10,12 @@ const Products = () => {
   const dispatch = Globalstate.dispatch;
 
 
-
   useEffect(() => {
     let componentMounted = true;
     const getProducts = async () => {
+      console.log("run");
       setLoading(true);
-      const response = await fetch(`https://fakestoreapi.com/products`);
+      const response = await fetch(`https://fakestoreapi.com/products?limit=5`);
 
       if (componentMounted) {
         setData(await response.clone().json());

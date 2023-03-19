@@ -29,7 +29,7 @@ const Navbar = () => {
               </li>
             </ul>
 
-            <div classNameName="buttons">
+            <div className="buttons">
                 <NavLink to="/cart" className="btn btn-outline-dark ms-2">
                     <i className="fa fa-shopping-cart me-1"> Cart</i>
                 </NavLink>

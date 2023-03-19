@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
@@ -8,11 +8,22 @@ import { Context } from "./context/Context";
 
 import App from "./App";
 
-ReactDOM.render(
-  <BrowserRouter>
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+   <BrowserRouter>
     <Context>
       <App />
     </Context>
-  </BrowserRouter>,
-  document.getElementById("root")
+  </BrowserRouter>
+</React.StrictMode>
 );
+
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <Context>
+//       <App />
+//     </Context>
+//   </BrowserRouter>,
+//   document.getElementById("root")
+// );
