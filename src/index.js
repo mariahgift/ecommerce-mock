@@ -8,7 +8,14 @@ import { Context } from "./context/Context";
 import ReactGA from "react-ga4";
 import App from "./App";
 
-ReactGA.initialize("G-YYTZSQPXL0");
+ReactGA.initialize("G-YYTZSQPXL0", {
+  gaOptions: {
+    debbug_mode: true
+  },
+  gtagOptions: {
+    debug_mode: true
+  }
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
